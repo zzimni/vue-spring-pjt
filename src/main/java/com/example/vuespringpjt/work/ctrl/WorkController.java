@@ -63,9 +63,10 @@ public class WorkController {
     @GetMapping("jenkins")
     public String debugMsg() {
         System.out.println(">>> debug Work Ctrl GET: /jenkins");
+        // test
         return "success";
     }
-    
+
 }
 
 
