@@ -1,0 +1,38 @@
+# backend, mariadb
+
+version: "3"
+
+services:
+    # front
+    # springboot
+    app:
+      container_name: work-container
+      depends_on:
+        - database
+      ports: 
+        - "8972:8888"
+      
+      build: .
+      environment:
+        SPRING_DATASOURCE_URL: jdbc:mariadb://database:3306/encore?useUnicode=true
+        SPRING_DATASOURCE_USERNAME: work_user
+        SPRING_DATASOURCE_PASSWORD: work_passwd
+      links:
+      - database
+      # '서버 기동 시 문제 생기면 다시 기동해줘' 라는 의미
+      restart: always
+
+
+    # mariadb
+    database: 
+      image: mariadb:10.6.16
+      container_name: workdb-container
+      environment:
+        MARIADB_ROOT_PASSWORD: 1234
+        MARIADB_USER: work_user
+        MARIADB_PASSWORD: work_passwd
+        MARIADB_DATABASE: encore
+      ports:
+         - "6033:3306"
+      volumes:
+         - ./src/main/resources/db_config/initdb.d:/docker-entrypoint-initdb.d

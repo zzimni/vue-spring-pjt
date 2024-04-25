@@ -1,4 +1,7 @@
-FROM ubuntu:latest
-LABEL authors="Playdata"
+FROM openjdk:17-alpine
 
-ENTRYPOINT ["top", "-b"]
+ARG JAR_FILE=build/libs/*.jar
+copy ${JAR_FILE} backend.jar
+
+# 환경 바꾸는 것 
+ENTRYPOINT [ "java", "-jar", "/backend.jar" ]
