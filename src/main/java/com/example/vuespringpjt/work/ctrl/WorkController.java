@@ -63,7 +63,7 @@ public class WorkController {
     @GetMapping("jenkins")
     public String debugMsg() {
         System.out.println(">>> debug Work Ctrl GET: /jenkins");
-        // test
+        // 자동 빌드 테스트
         return "success";
     }
 
