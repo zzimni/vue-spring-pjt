@@ -22,8 +22,6 @@ services:
       - database
       # '서버 기동 시 문제 생기면 다시 기동해줘' 라는 의미
       restart: always
-      links:
-      - database
     # platform: linux/arm64
 
 
