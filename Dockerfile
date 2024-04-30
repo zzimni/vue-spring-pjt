@@ -1,7 +1,18 @@
-FROM openjdk:17-alpine
+#jenkins
+#FROM openjdk:17
+#
+#ARG JAR_FILE=build/libs/*.jar
+#
+#COPY ${JAR_FILE} backend.jar
+#
+#ENTRYPOINT ["java","-jar", "/backend.jar"]
+
+# git action
+FROM openjdk:17
+
+WORKDIR /app-backend
 
 ARG JAR_FILE=build/libs/*.jar
-copy ${JAR_FILE} backend.jar
+COPY ${JAR_FILE} vuespring.jar
 
-# 환경 바꾸는 것 
-ENTRYPOINT [ "java", "-jar", "/backend.jar" ]
+ENTRYPOINT ["java","-jar", "/app-backendvuespring.jar"]
